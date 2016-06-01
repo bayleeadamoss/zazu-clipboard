@@ -1,0 +1,30 @@
+{
+  "name": "clipboard",
+  "version": "1.0.0",
+  "description": "A clipboard manager for Zazu.",
+  "main": "monitor.js",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.0",
+    "nedb": "^1.8.0"
+  },
+  "scripts": {
+    "start": "electron monitor.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tinytacoteam/clipboard.git"
+  },
+  "keywords": [
+    "clipboard",
+    "clip",
+    "monitor",
+    "manager",
+    "zazu"
+  ],
+  "author": "Blaine Schmeisser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tinytacoteam/clipboard/issues"
+  },
+  "homepage": "https://github.com/tinytacoteam/clipboard#readme"
+}
