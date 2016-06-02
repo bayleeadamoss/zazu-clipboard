@@ -8,9 +8,12 @@ const data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA9QAAACWCAYAAAA/rMB+
 
 const image = nativeImage.createFromDataURL(data)
 
+console.log('imagesize', data.length)
 console.log('image', image, image.isEmpty())
 console.log('equality', image.toDataURL() === data)
 
-var ret = clipboard.write({image})
+var ret = clipboard.write({image}) // clipboard.writeImage(image)
+
+clipboard.write('data:image/png;base64:')
 
 console.log('done', ret)
