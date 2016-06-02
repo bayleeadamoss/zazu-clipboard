@@ -64,9 +64,11 @@ describe('CappedCollection', () => {
     })
 
     describe('all', () => {
-      it('gives me all 5 items back', () => {
+      it('gives me all 5 items back', (done) => {
         subject.all().then((docs) => {
           expect(docs.length).to.eq(5)
+        }).then(done).catch((err) => {
+          console.log(err, err.stack)
         })
       })
 
@@ -85,8 +87,18 @@ describe('CappedCollection', () => {
 
     describe('insert', () => {
       describe('given I add one past the capacity', () => {
-        beforeEach(() => {
-          subject.insert({ name: 'sixth' })
+        beforeEach((done) => {
+          subject.insert({ name: 'sixth' }).then(() => {
+            done()
+          })
+        })
+
+        it('has exactly 5 items', (done) => {
+          subject.all().then((docs) => {
+            expect(docs.length).to.eq(5)
+          }).then(done).catch((err) => {
+            console.log(err, err.stack)
+          })
         })
 
         it('is in the correct order', (done) => {

@@ -8,8 +8,9 @@
     "nedb": "^1.8.0"
   },
   "scripts": {
-    "start": "electron monitor.js",
+    "monitor": "electron monitor.js",
     "search": "electron search.js",
+    "copy": "electron copy.js",
     "test": "mocha ./test"
   },
   "repository": {

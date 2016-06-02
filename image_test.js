@@ -8,7 +8,7 @@ const data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA9QAAACWCAYAAAA/rMB+
 
 const image = nativeImage.createFromDataURL(data)
 
-console.log('imagesize', data.length)
+console.log('imagesize', image.getSize())
 console.log('image', image, image.isEmpty())
 console.log('equality', image.toDataURL() === data)
 
