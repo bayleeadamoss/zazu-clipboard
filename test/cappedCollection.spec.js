@@ -1,7 +1,7 @@
 'use strict'
 
 const expect = require('chai').expect
-const CappedCollection = require('../lib/cappedCollection')
+const CappedCollection = require('../src/lib/cappedCollection')
 const fs = require('fs')
 const path = require('path')
 

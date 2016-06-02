@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const Score = require('../lib/score')
+const Score = require('../src/lib/score')
 
 describe('Score', () => {
   describe('given an accuracy of 0.5', () => {
