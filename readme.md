@@ -1,0 +1,1 @@
+## Clipboard manager for Zazu
