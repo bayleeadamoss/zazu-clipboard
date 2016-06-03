@@ -8,6 +8,7 @@
     "nedb": "^1.8.0"
   },
   "scripts": {
+    "watch": "while :; do electron ./src/monitor.js; sleep 1; done",
     "monitor": "electron src/monitor.js",
     "search": "node src/search.js",
     "copy": "electron src/copy.js",
