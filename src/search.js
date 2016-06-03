@@ -2,8 +2,6 @@
 
 const CappedCollection = require('./lib/cappedCollection')
 const Score = require('./lib/score')
-const readableFormat = require('./lib/readableFormat')
-const nativeImage = require('electron').nativeImage
 
 const accuracy = 0.5
 const query = process.argv.slice(-1)[0]
@@ -23,27 +21,21 @@ clipCollection.all().then((allClips) => {
     return b.score - a.score
   }).slice(0, 3)
 }).then((sortedClips) => {
-  return sortedClips.reduce((memo, clip) => {
-    if (clip.score > 0) {
-      if (clip.type === 'text') {
-        memo.push({
-          title: clip.raw,
-          value: clip._id,
-        })
-      } else if (clip.type === 'image') {
-        const image = nativeImage.createFromDataURL(clip.raw)
-        const dimensions = image.getSize()
-        const size = readableFormat(clip.raw.length * 0.75)
-        memo.push({
-          title: `Image: ${dimensions.width}x${dimensions.height} (${size.value}${size.unit})`,
-          value: clip._id,
-        })
+  return sortedClips.map((clip) => {
+    if (clip.type === 'text') {
+      return {
+        title: clip.raw,
+        value: clip._id,
+      }
+    } else if(clip.type === 'image') {
+      return {
+        title: clip.title,
+        value: clip._id,
       }
     }
-    return memo
-  }, [])
+  })
 }).then((clips) => {
-  console.log(clips)
+  console.log(JSON.stringify(clips))
   process.exit(0)
 }).catch((err) => {
   console.log(err, err.stack)

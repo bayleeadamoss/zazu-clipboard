@@ -9,7 +9,7 @@
   },
   "scripts": {
     "monitor": "electron src/monitor.js",
-    "search": "electron src/search.js",
+    "search": "node src/search.js",
     "copy": "electron src/copy.js",
     "test": "mocha ./test"
   },
