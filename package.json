@@ -4,6 +4,7 @@
   "description": "A clipboard manager for Zazu.",
   "main": "monitor.js",
   "dependencies": {
+    "deasync": "^0.1.7",
     "electron-prebuilt": "^1.2.0",
     "nedb": "^1.8.0"
   },
