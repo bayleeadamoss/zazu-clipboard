@@ -12,7 +12,7 @@ class CappedCollection {
   }
 
   last () {
-    return new Promise((accept) => {
+    return new Promise((accept, reject) => {
       return this.collection
         .findOne({})
         .sort({ createdAt: -1 })
@@ -23,7 +23,7 @@ class CappedCollection {
   }
 
   findOne (_id) {
-    return new Promise((accept) => {
+    return new Promise((accept, reject) => {
       return this.collection.findOne({_id})
         .exec((err, doc) => {
           err ? reject(err) : accept(doc)
@@ -31,8 +31,23 @@ class CappedCollection {
     })
   }
 
+  upsert (doc, userOptions) {
+    const options = Object.assign({}, {
+      multi: false,
+      upsert: true,
+    }, userOptions)
+    const compiledDoc = Object.assign({}, {
+      createdAt: new Date()
+    }, doc)
+    return new Promise((accept, reject) => {
+      this.collection.update(doc, compiledDoc, options, (err, numReplaced) => {
+        err ? reject(err) : accept(numReplaced)
+      })
+    })
+  }
+
   all () {
-    return new Promise((accept) => {
+    return new Promise((accept, reject) => {
       return this.collection
         .find({})
         .sort({ createdAt: -1 })
@@ -43,7 +58,7 @@ class CappedCollection {
   }
 
   remove (ids) {
-    return new Promise((accept) => {
+    return new Promise((accept, reject) => {
       this.collection.remove({ _id: { $in: ids } }, { multi: true }, (err, num) => {
         err ? reject(err) : accept(num)
       })
@@ -59,9 +74,11 @@ class CappedCollection {
   }
 
   insert (doc) {
-    doc.createdAt = doc.createdAt || new Date()
-    return new Promise((accept) => {
-      this.collection.insert(doc, (err) => {
+    const compiledDoc = Object.assign({}, {
+      createdAt: new Date()
+    }, doc)
+    return new Promise((accept, reject) => {
+      this.collection.insert(compiledDoc, (err) => {
         err ? reject(err) : accept()
       })
     }).then(() => {
