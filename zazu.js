@@ -24,7 +24,7 @@ module.exports = {
         id: 'clip',
         type: 'PrefixScript',
         space: true,
-        args: 'Required',
+        args: 'Optional',
         prefix: 'clip',
         script: 'node ./src/search.js "{query}"',
         connections: ['CopyToClipboard'],
