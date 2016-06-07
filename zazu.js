@@ -15,6 +15,7 @@ module.exports = {
       },
       {
         type: 'Hotkey',
+        name: 'ClipboardKey',
         hotkey: 'alt+shift+v',
         connections: ['clip']
       },
