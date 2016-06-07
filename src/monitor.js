@@ -56,5 +56,7 @@ getClip = () => {
   return clip
 }
 
-electron.app.dock.hide()
+if (electron.app.dock) {
+  electron.app.dock.hide()
+}
 tick()
