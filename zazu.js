@@ -6,6 +6,7 @@ module.exports = {
   icon: 'assets/clipboard.png',
   homepage: 'https://github.com/tinytacoteam/clipboard',
   git: 'git@github.com:tinytacoteam/clipboard.git',
+  stylesheet: 'css/preview.css',
   install: 'npm install',
   blocks: {
     external: [

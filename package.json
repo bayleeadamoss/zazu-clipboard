@@ -5,7 +5,8 @@
   "main": "monitor.js",
   "dependencies": {
     "electron-prebuilt": "^1.2.0",
-    "nedb": "^1.8.0"
+    "nedb": "^1.8.0",
+    "s-ago": "^1.1.0"
   },
   "scripts": {
     "watch": "while :; do electron ./src/monitor.js; sleep 1; done",
