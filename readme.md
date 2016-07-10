@@ -1,6 +1,6 @@
 ## Clipboard manager for Zazu
 
-[![Build Status](https://travis-ci.org/tinytacoteam/clipboard.svg?branch=master)](https://travis-ci.org/tinytacoteam/clipboard)
+[![Build Status](https://travis-ci.org/tinytacoteam/zazu-clipboard.svg?branch=master)](https://travis-ci.org/tinytacoteam/zazu-clipboard)
 
 Remembers the things you've copied into your clipboard, and gives it back in a
 searchable format.
@@ -14,7 +14,7 @@ searchable format.
 Add the package to your plugins array in `./zazurc.js`.
 
 ~~~ javascript
-'tinytacoteam/clipboard',
+'tinytacoteam/zazu-clipboard',
 ~~~
 
 You can overwrite the keyboard shortcut by defining a variable with the name
@@ -22,7 +22,7 @@ You can overwrite the keyboard shortcut by defining a variable with the name
 
 ~~~ javascript
 {
-  name: 'tinytacoteam/clipboard',
+  name: 'tinytacoteam/zazu-clipboard',
   variables: {
     ClipboardKey: 'cmd+shift+v',
   },
