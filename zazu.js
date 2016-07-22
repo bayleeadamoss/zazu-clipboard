@@ -1,13 +1,9 @@
 module.exports = {
   name: 'Clipboard',
   version: '1.0.0',
-  author: 'Blaine Schmeisser',
   description: 'Clipboard manager for zazu.',
   icon: 'assets/clipboard.png',
-  homepage: 'https://github.com/tinytacoteam/zazu-clipboard',
-  git: 'git@github.com:tinytacoteam/zazu-clipboard.git',
   stylesheet: 'css/preview.css',
-  install: 'npm install',
   blocks: {
     external: [
       {
