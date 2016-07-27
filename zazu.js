@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   name: 'Clipboard',
   version: '1.0.0',
@@ -7,8 +9,15 @@ module.exports = {
   blocks: {
     external: [
       {
+        id: 'Database',
         type: 'ServiceScript',
-        script: './node_modules/.bin/electron ./src/monitor.js',
+        script: path.join('src', 'database.js'),
+        interval: 30000,
+      },
+      {
+        id: 'Monitor',
+        type: 'ServiceScript',
+        script: path.join('src', 'monitor.js'),
       },
       {
         type: 'Hotkey',
@@ -24,7 +33,7 @@ module.exports = {
         space: true,
         args: 'Optional',
         prefix: 'clip',
-        script: 'node ./src/search.js "{query}"',
+        script: path.join('src', 'search.js'),
         connections: ['CopyToClipboard'],
       },
     ],
@@ -32,7 +41,7 @@ module.exports = {
       {
         id: 'CopyToClipboard',
         type: 'UserScript',
-        script: './node_modules/.bin/electron ./src/copy.js "{value}"',
+        script: path.join('src', 'copy.js'),
       },
     ],
   },

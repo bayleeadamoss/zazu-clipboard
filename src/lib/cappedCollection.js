@@ -1,14 +1,13 @@
-'use strict'
-
 const Datastore = require('nedb')
+const path = require('path')
 
 class CappedCollection {
-  constructor (name, size) {
+  constructor (name, size, options) {
     this.MAX_SIZE = size || 99999
     this.collection = new Datastore({
-      filename: './data/' + name + '.nedb',
+      filename: path.join(options.cwd, 'data', name + '.nedb'),
       autoload: true,
-    });
+    })
   }
 
   last () {
@@ -43,6 +42,8 @@ class CappedCollection {
       this.collection.update(doc, compiledDoc, options, (err, numReplaced) => {
         err ? reject(err) : accept(numReplaced)
       })
+    }).then(() => {
+      return this.reduce()
     })
   }
 
@@ -70,19 +71,6 @@ class CappedCollection {
       const excessDocs = docs.reverse().slice(0, Math.max(0, docs.length - this.MAX_SIZE))
       const excessIds = excessDocs.map((doc) => doc._id)
       return this.remove(excessIds)
-    })
-  }
-
-  insert (doc) {
-    const compiledDoc = Object.assign({}, {
-      createdAt: new Date()
-    }, doc)
-    return new Promise((accept, reject) => {
-      this.collection.insert(compiledDoc, (err) => {
-        err ? reject(err) : accept()
-      })
-    }).then(() => {
-      return this.reduce()
     })
   }
 }
