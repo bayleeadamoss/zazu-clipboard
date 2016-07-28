@@ -5,10 +5,6 @@
 Remembers the things you've copied into your clipboard, and gives it back in a
 searchable format.
 
-## Requirements
-
-* Node 4+
-
 ## Installing
 
 Add the package to your plugins array in `./zazurc.js`.
