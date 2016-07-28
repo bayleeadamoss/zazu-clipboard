@@ -10,19 +10,21 @@ describe('CappedCollection', () => {
   describe('given a full capped collection of 5 items', () => {
 
     beforeEach((done) => {
-      subject = new CappedCollection('test_items', 5)
-      subject.insert({ name: 'first', createdAt: new Date(new Date() - 9 * 1000) })
+      subject = new CappedCollection('test_items', 5, {
+        cwd: __dirname,
+      })
+      subject.upsert({ name: 'first', createdAt: new Date(new Date() - 9 * 1000) })
         .then(() => {
-          return subject.insert({ name: 'second', createdAt: new Date(new Date() - 8 * 1000) })
+          return subject.upsert({ name: 'second', createdAt: new Date(new Date() - 8 * 1000) })
         })
         .then(() => {
-          return subject.insert({ name: 'third', createdAt: new Date(new Date() - 7 * 1000) })
+          return subject.upsert({ name: 'third', createdAt: new Date(new Date() - 7 * 1000) })
         })
         .then(() => {
-          return subject.insert({ name: 'fourth', createdAt: new Date(new Date() - 6 * 1000) })
+          return subject.upsert({ name: 'fourth', createdAt: new Date(new Date() - 6 * 1000) })
         })
         .then(() => {
-          return subject.insert({ name: 'fifth', createdAt: new Date(new Date() - 5 * 1000) })
+          return subject.upsert({ name: 'fifth', createdAt: new Date(new Date() - 5 * 1000) })
         }).then(done)
     })
 
@@ -83,37 +85,6 @@ describe('CappedCollection', () => {
           console.log(err, err.stack)
         })
       })
-    })
-
-    describe('insert', () => {
-      describe('given I add one past the capacity', () => {
-        beforeEach((done) => {
-          subject.insert({ name: 'sixth' }).then(() => {
-            done()
-          })
-        })
-
-        it('has exactly 5 items', (done) => {
-          subject.all().then((docs) => {
-            expect(docs.length).to.eq(5)
-          }).then(done).catch((err) => {
-            console.log(err, err.stack)
-          })
-        })
-
-        it('is in the correct order', (done) => {
-          subject.all().then((docs) => {
-            expect(docs[0].name).to.eq('sixth')
-            expect(docs[1].name).to.eq('fifth')
-            expect(docs[2].name).to.eq('fourth')
-            expect(docs[3].name).to.eq('third')
-            expect(docs[4].name).to.eq('second')
-          }).then(done).catch((err) => {
-            console.log(err, err.stack)
-          })
-        })
-      })
-
     })
   })
 })
