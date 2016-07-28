@@ -35,14 +35,15 @@ module.exports = (pluginContext) => {
     return clip
   }
 
+  let lastClip
   return (env = {}) => {
     if (isTransient()) { return Promise.resolve() }
     const clip = getClip()
-    const clipCollection = new CappedClient()
-    return clipCollection.last().then((lastClip) => {
-      if (!lastClip || lastClip.type !== clip.type || lastClip.raw !== clip.raw) {
-        return clipCollection.upsert(clip)
-      }
-    })
+    if (!lastClip || lastClip.type !== clip.type || lastClip.raw !== clip.raw) {
+      lastClip = clip
+      const clipCollection = new CappedClient()
+      return clipCollection.upsert(clip)
+    }
+    return Promise.resolve()
   }
 }
