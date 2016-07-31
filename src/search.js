@@ -19,9 +19,14 @@ module.exports = (pluginContext) => {
         return clip
       })
     }).then((foundClips) => {
-      return foundClips.sort((a, b) => {
+      return foundClips.slice(0, 40)
+    }).then((slicedClips) => {
+      if (query === '') {
+        return slicedClips
+      }
+      return slicedClips.sort((a, b) => {
         return b.score - a.score
-      }).slice(0, 10)
+      })
     }).then((sortedClips) => {
       return sortedClips.map((clip) => {
         if (clip.type === 'text') {
