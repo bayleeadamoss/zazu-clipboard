@@ -19,9 +19,13 @@ module.exports = (pluginContext) => {
     })
   }
 
-  getClip = () => {
+  getClip = (ignoreImages) => {
     const clip = {}
-    clip.type = clipboard.readImage().isEmpty() ? 'text' : 'image'
+    if (ignoreImages) {
+      clip.type = 'text'
+    } else {
+      clip.type = clipboard.readImage().isEmpty() ? 'text' : 'image'
+    }
 
     if (clip.type === 'image') {
       const image = clipboard.readImage()
@@ -38,7 +42,7 @@ module.exports = (pluginContext) => {
   let lastClip
   return (env = {}) => {
     if (isTransient()) { return Promise.resolve() }
-    const clip = getClip()
+    const clip = getClip(env.ignoreImages)
     if (!lastClip || lastClip.type !== clip.type || lastClip.raw !== clip.raw) {
       lastClip = clip
       const clipCollection = new CappedClient()

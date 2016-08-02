@@ -24,3 +24,15 @@ You can overwrite the keyboard shortcut by defining a variable with the name
   },
 }
 ~~~
+
+If you prefer to disable image storing, you can set the `ignoreImages` to
+`true`.
+
+~~~ javascript
+{
+  name: 'tinytacoteam/zazu-clipboard',
+  variables: {
+    ignoreImages: true,
+  },
+}
+~~~

@@ -23,12 +23,12 @@ module.exports = {
         type: 'Hotkey',
         name: 'ClipboardKey',
         hotkey: 'alt+shift+v',
-        connections: ['clip']
+        connections: ['searcher']
       },
     ],
     input: [
       {
-        id: 'clip',
+        id: 'searcher',
         type: 'PrefixScript',
         space: true,
         args: 'Optional',
