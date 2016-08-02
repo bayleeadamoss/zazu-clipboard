@@ -1,31 +1,17 @@
 const ago = require('s-ago')
 
-const Score = require('./lib/score')
 const CappedClient = require('./lib/cappedClient')
 
-/**
- * Given a query sorts the clips based on the score and returns them.
- */
 module.exports = (pluginContext) => {
   return (query, env = {}) => {
-    const accuracy = 0.5
-    const scoreQuery = new Score(query, accuracy)
     const clipCollection = new CappedClient()
 
     return clipCollection.all().then((allClips) => {
-      clipCollection.close()
-      return allClips.map((clip) => {
-        clip.score = scoreQuery.score(clip.raw)
-        return clip
-      })
-    }).then((foundClips) => {
-      return foundClips.slice(0, 40)
-    }).then((slicedClips) => {
       if (query === '') {
-        return slicedClips
+        return allClips.slice(0, 10)
       }
-      return slicedClips.sort((a, b) => {
-        return b.score - a.score
+      return allClips.filter((clip) => {
+        return clip.raw.indexOf(query) !== -1
       })
     }).then((sortedClips) => {
       return sortedClips.map((clip) => {
