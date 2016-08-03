@@ -1,5 +1,16 @@
 body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.text.color {
+  height: 100%;
+  width: 100%;
+  line-height: 200px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .meta {
@@ -10,4 +21,8 @@ body {
   bottom: 0;
   text-align: center;
   margin-bottom: 5px;
+}
+
+.text.dark, .meta.dark {
+  color: #F9F9F9;
 }

@@ -36,3 +36,9 @@ If you prefer to disable image storing, you can set the `ignoreImages` to
   },
 }
 ~~~
+
+## Screenshots
+
+![text](./assets/text_screenshot.png)
+
+![color](./assets/color_screenshot.png)
