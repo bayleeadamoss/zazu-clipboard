@@ -9,8 +9,8 @@ module.exports = (allClips) => {
         title: clip.raw,
         value: clip._id,
         preview: `
-          <pre class="text">${clip.raw}</pre>
-          <div class="meta">${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters</div>
+          <pre class='text'>${clip.raw}</pre>
+          <div class='meta'>${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters</div>
         `
       }
       if (isHexColor) {
@@ -18,9 +18,9 @@ module.exports = (allClips) => {
         const colorType = color.dark() ? 'dark' : 'light'
         response.preview = `
           <pre
-            class="text color ${colorType}"
-            style="background-color: ${clip.raw};">${clip.raw}</pre>
-          <div class="meta ${colorType}">
+            class='text color ${colorType}'
+            style='background-color: ${clip.raw};'>${clip.raw}</pre>
+          <div class='meta ${colorType}'>
             ${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters
           </div>
         `
@@ -31,7 +31,8 @@ module.exports = (allClips) => {
         title: clip.title,
         value: clip._id,
         preview: `
-          <div class="meta">${ago(clip.createdAt)}<br />${clip.raw.length} characters</div>
+          <img src='${clip.raw}' />
+          <div class='meta'>${ago(new Date(clip.createdAt))}</div>
         `,
       }
     }
