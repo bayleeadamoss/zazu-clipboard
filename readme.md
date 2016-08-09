@@ -5,6 +5,20 @@
 Remembers the things you've copied into your clipboard, and gives it back in a
 searchable format.
 
+## Usage
+
+Most commonly this is opened with a keyboard shortcut `alt+shift+v`, which can
+be overwritten. Simply hit this key and you'll immediately be shown your recent
+clips that can be searched.
+
+Without a keyboard shortcut, open Zazu and use the prefix `clip` to search
+through your clips. For example if you want to search your clips for the word
+emoji you can use this example:
+
+~~~
+clip emoji
+~~~
+
 ## Installing
 
 Add the package to your plugins array in `./zazurc.js`.
