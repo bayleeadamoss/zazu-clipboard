@@ -1,4 +1,3 @@
-const dnode = require('dnode')
 const ipc = require('./ipc')
 
 class CappedClient {
