@@ -51,6 +51,18 @@ If you prefer to disable image storing, you can set the `ignoreImages` to
 }
 ~~~
 
+By defualt we remember the last 50 items in your clipboard. To change this add a
+`size` variable to your configuration.
+
+~~~ javascript
+{
+  name: 'tinytacoteam/zazu-clipboard',
+  variables: {
+    size: 1000,
+  },
+}
+~~~
+
 ## Screenshots
 
 ![text](./assets/text_screenshot.png)

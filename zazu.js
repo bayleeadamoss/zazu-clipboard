@@ -12,7 +12,7 @@ module.exports = {
         id: 'Database',
         type: 'ServiceScript',
         script: path.join('src', 'database.js'),
-        interval: 30000,
+        interval: 1000,
       },
       {
         id: 'Monitor',

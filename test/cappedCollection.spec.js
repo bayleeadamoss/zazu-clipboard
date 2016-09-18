@@ -10,9 +10,10 @@ describe('CappedCollection', () => {
   describe('given a full capped collection of 5 items', () => {
 
     beforeEach((done) => {
-      subject = new CappedCollection('test_items', 5, {
+      subject = new CappedCollection('test_items', {
         cwd: __dirname,
       })
+      subject.setSize(5)
       subject.upsert({ name: 'first', createdAt: new Date(new Date() - 9 * 1000) })
         .then(() => {
           return subject.upsert({ name: 'second', createdAt: new Date(new Date() - 8 * 1000) })

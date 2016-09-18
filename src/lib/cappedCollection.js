@@ -2,12 +2,16 @@ const Datastore = require('nedb')
 const path = require('path')
 
 class CappedCollection {
-  constructor (name, size, options) {
-    this.MAX_SIZE = size || 99999
+  constructor (name, options) {
+    this.MAX_SIZE = 99999
     this.collection = new Datastore({
       filename: path.join(options.cwd, 'data', name + '.nedb'),
       autoload: true,
     })
+  }
+
+  setSize(size) {
+    this.MAX_SIZE = size
   }
 
   last () {

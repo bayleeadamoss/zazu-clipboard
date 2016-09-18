@@ -4,7 +4,7 @@ const CappedCollection = require('./lib/cappedCollection')
 module.exports = (pluginContext) => {
 
   const cwd = pluginContext.cwd
-  const clipCollection = new CappedCollection('clipCollection', 50, {
+  const clipCollection = new CappedCollection('clipCollection', {
     cwd,
   })
 
@@ -25,6 +25,8 @@ module.exports = (pluginContext) => {
   })
 
   return (env = {}) => {
+    const size = env.size || 50
+    clipCollection.setSize(size)
     return Promise.resolve('ping')
   }
 }
