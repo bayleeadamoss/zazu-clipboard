@@ -20,8 +20,9 @@ module.exports = {
         script: path.join('src', 'monitor.js'),
       },
       {
+        id: 'ClipboardKey',
+        name: 'ClipboardKey', // no longer used
         type: 'Hotkey',
-        name: 'ClipboardKey',
         hotkey: 'alt+shift+v',
         connections: ['searcher']
       },
