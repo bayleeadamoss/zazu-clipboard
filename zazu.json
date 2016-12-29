@@ -1,0 +1,51 @@
+{
+  "name": "Clipboard",
+  "version": "1.0.0",
+  "description": "Clipboard manager for zazu.",
+  "icon": "assets/clipboard.png",
+  "stylesheet": "css/preview.css",
+  "blocks": {
+    "external": [
+      {
+        "id": "Database",
+        "type": "ServiceScript",
+        "script": "src/database.js",
+        "interval": 1000
+      },
+      {
+        "id": "Monitor",
+        "type": "ServiceScript",
+        "script": "src/monitor.js"
+      },
+      {
+        "id": "ClipboardKey",
+        "name": "ClipboardKey",
+        "type": "Hotkey",
+        "hotkey": "alt+shift+v",
+        "connections": [
+          "searcher"
+        ]
+      }
+    ],
+    "input": [
+      {
+        "id": "searcher",
+        "type": "PrefixScript",
+        "space": true,
+        "args": "Optional",
+        "prefix": "clip",
+        "script": "src/search.js",
+        "connections": [
+          "CopyToClipboard"
+        ]
+      }
+    ],
+    "output": [
+      {
+        "id": "CopyToClipboard",
+        "type": "UserScript",
+        "script": "src/copy.js"
+      }
+    ]
+  }
+}

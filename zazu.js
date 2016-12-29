@@ -1,3 +1,4 @@
+// depcreated use zazu.json instead.
 const path = require('path')
 
 module.exports = {
