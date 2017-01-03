@@ -23,43 +23,47 @@ clip emoji
 
 Add the package to your plugins array in `./zazurc.js`.
 
-~~~ javascript
-'tinytacoteam/zazu-clipboard',
+~~~ json
+{
+  "plugins": [
+    "tinytacoteam/zazu-clipboard"
+  ]
+}
 ~~~
 
 You can overwrite the keyboard shortcut by defining a variable with the name
 `ClipboardKey`.
 
-~~~ javascript
+~~~ json
 {
-  name: 'tinytacoteam/zazu-clipboard',
-  variables: {
-    ClipboardKey: 'cmd+shift+v',
-  },
+  "name": "tinytacoteam/zazu-clipboard",
+  "variables": {
+    "ClipboardKey": "cmd+shift+v"
+  }
 }
 ~~~
 
 If you prefer to disable image storing, you can set the `ignoreImages` to
 `true`.
 
-~~~ javascript
+~~~ json
 {
-  name: 'tinytacoteam/zazu-clipboard',
-  variables: {
-    ignoreImages: true,
-  },
+  "name": "tinytacoteam/zazu-clipboard",
+  "variables": {
+    "ignoreImages": true
+  }
 }
 ~~~
 
 By defualt we remember the last 50 items in your clipboard. To change this add a
 `size` variable to your configuration.
 
-~~~ javascript
+~~~ json
 {
-  name: 'tinytacoteam/zazu-clipboard',
-  variables: {
-    size: 1000,
-  },
+  "name": "tinytacoteam/zazu-clipboard",
+  "variables": {
+    "size": 1000
+  }
 }
 ~~~
 
