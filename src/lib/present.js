@@ -1,5 +1,6 @@
 const ago = require('s-ago')
 const Color = require('color')
+const { htmlEncode } = require('js-htmlencode')
 
 module.exports = (allClips) => {
   return allClips.map((clip) => {
@@ -9,7 +10,7 @@ module.exports = (allClips) => {
         title: clip.raw,
         value: clip._id,
         preview: `
-          <pre class='text'>${clip.raw}</pre>
+          <pre class='text'>${htmlEncode(clip.raw)}</pre>
           <div class='meta'>${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters</div>
         `
       }
