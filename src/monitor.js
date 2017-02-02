@@ -2,7 +2,7 @@ const readableFormat = require('./lib/readableFormat')
 const CappedClient = require('./lib/cappedClient')
 
 module.exports = (pluginContext) => {
-  const clipboard = pluginContext.clipboard
+  const { cwd, clipboard } = pluginContext
 
   isTransient = () => {
     const badTypes = [
@@ -45,7 +45,7 @@ module.exports = (pluginContext) => {
     const clip = getClip(env.ignoreImages)
     if (!lastClip || lastClip.type !== clip.type || lastClip.raw !== clip.raw) {
       lastClip = clip
-      const clipCollection = new CappedClient()
+      const clipCollection = CappedClient.init(cwd, env)
       return clipCollection.upsert(clip)
     }
     return Promise.resolve()

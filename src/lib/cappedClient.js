@@ -1,29 +1,36 @@
-const ipc = require('./ipc')
+const CappedCollection = require('./cappedCollection')
 
 class CappedClient {
-  last () {
-    return new Promise((resolve, reject) => {
-      ipc.emit('last', resolve)
+  constructor (cwd, env) {
+    this.clipCollection = new CappedCollection('clipCollection', {
+      cwd,
     })
+    this.clipCollection.setSize(env.size || 50)
+  }
+
+  last () {
+    return this.clipCollection.last()
   }
 
   findOne (_id) {
-    return new Promise((resolve, reject) => {
-      ipc.emit('findOne', _id, resolve)
-    })
+    return this.clipCollection.findOne(_id)
   }
 
   upsert (doc, userOptions) {
-    return new Promise((resolve, reject) => {
-      ipc.emit('upsert', doc, userOptions, resolve)
-    })
+    return this.clipCollection.upsert(doc, userOptions)
   }
 
   all () {
-    return new Promise((resolve, reject) => {
-      ipc.emit('all', resolve)
-    })
+    return this.clipCollection.all()
   }
 }
 
-module.exports = CappedClient
+var client = null
+module.exports = {
+  init: (cwd, env) => {
+    if (!client) {
+      client = new CappedClient(cwd, env)
+    }
+    return client
+  },
+}

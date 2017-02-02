@@ -4,11 +4,10 @@ const CappedClient = require('./lib/cappedClient')
  * Given an id, coyp the data to the clipboard.
  */
 module.exports = (pluginContext) => {
-  const clipboard = pluginContext.clipboard
-  const nativeImage = pluginContext.nativeImage
+  const { cwd, clipboard, nativeImage } = pluginContext
 
   return (id) => {
-    const clipCollection = new CappedClient()
+    const clipCollection = CappedClient.init(cwd, {})
     return clipCollection.findOne(id).then((clip) => {
       if (clip.type === 'text') {
         clipboard.writeText(clip.raw)
