@@ -67,6 +67,17 @@ By defualt we remember the last 50 items in your clipboard. To change this add a
 }
 ~~~
 
+The clipboard monitor update interval is `1000` ms (except `3000` ms for Linux system) by default, however, user can customize the interval by setting `updateInterval` option in the configuration. The interval has to be no less than `250` ms.
+
+```json
+{
+  "name": "tinytacoteam/zazu-clipboard",
+  "variables": {
+    "updateInterval": 1500
+  }
+}
+```
+
 ## Screenshots
 
 ![text](./assets/text_screenshot.png)
