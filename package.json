@@ -6,10 +6,13 @@
   "dependencies": {
     "color": "^0.11.3",
     "js-htmlencode": "^0.2.0",
+    "mkdirp": "^0.5.1",
     "nedb": "^1.8.0",
     "s-ago": "^1.1.0"
   },
   "scripts": {
+    "lint": "eslint .",
+    "prepush": "npm run lint && npm test",
     "test": "mocha ./test"
   },
   "repository": {
@@ -31,6 +34,11 @@
   "homepage": "https://github.com/tinytacoteam/zazu-clipboard#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+    "eslint": "^3.15.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.2",
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^2.5.3",
+    "rimraf": "^2.5.4"
   }
 }

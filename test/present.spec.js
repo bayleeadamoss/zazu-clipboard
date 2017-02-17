@@ -3,8 +3,8 @@ const present = require('../src/lib/present')
 
 const clips = {
   short_hex: { _id: 1, type: 'text', raw: '#fff', createdAt: new Date() },
-  long_hex:  { _id: 2, type: 'text', raw: '#000000', createdAt: new Date() },
-  word:      { _id: 3, type: 'text', raw: 'Quadrupoles', createdAt: new Date() },
+  long_hex: { _id: 2, type: 'text', raw: '#000000', createdAt: new Date() },
+  word: { _id: 3, type: 'text', raw: 'Quadrupoles', createdAt: new Date() },
 }
 
 describe('Present', () => {
