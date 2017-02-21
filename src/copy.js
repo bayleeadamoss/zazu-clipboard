@@ -11,7 +11,7 @@ module.exports = (pluginContext) => {
     return clipCollection.findOne(id).then((clip) => {
       if (clip.type === 'text') {
         clipboard.writeText(clip.raw)
-      } else if(clip.type === 'image') {
+      } else if (clip.type === 'image') {
         const image = nativeImage.createFromDataURL(clip.raw)
         clipboard.writeImage(image)
       }

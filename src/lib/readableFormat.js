@@ -1,5 +1,5 @@
-function readableFormat(value) {
-  var unitNames = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb']
+function readableFormat (value) {
+  var unitNames = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB']
   var unitIndex = 0
 
   while (value > 1000) {
@@ -12,7 +12,7 @@ function readableFormat(value) {
   }
 }
 
-function threeDigitPrecision(value) {
+function threeDigitPrecision (value) {
   if (value < 10) {
     return Math.round(value * 100) / 100
   } else if (value < 100) {
