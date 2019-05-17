@@ -11,11 +11,11 @@ function present (allClips, options = {}) {
       const isHexColor = clip.raw.match(/^#([0-9a-f]{3}){1,2}$/i)
       const response = {
         title: clip.raw,
+        subtitle: `${ago(new Date(clip.createdAt))}, ${clip.raw.length} characters`,
         value: clip._id,
         id: clip._id,
         preview: `
-          <pre class='text'>${htmlEncode(clip.raw)}</pre>
-          <div class='meta'>${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters</div>
+          <pre class="text">${htmlEncode(clip.raw)}</pre>
         `,
       }
       if (isHexColor) {
@@ -23,11 +23,11 @@ function present (allClips, options = {}) {
         const colorType = color.isDark() ? 'dark' : 'light'
         response.preview = `
           <pre
-            class='text color ${colorType}'
-            style='background-color: ${clip.raw};'>${clip.raw}</pre>
-          <div class='meta ${colorType}'>
-            ${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters
-          </div>
+            class="text color ${colorType}"
+            style="background-color: ${clip.raw};"
+          >
+            ${clip.raw}
+          </pre>
         `
       }
       return response
@@ -46,11 +46,11 @@ function present (allClips, options = {}) {
       return {
         icon,
         title: clip.title,
+        subtitle: ago(new Date(clip.createdAt)),
         id: clip._id,
         value: clip._id,
         preview: `
-          <img src='${imageSrc}' />
-          <div class='meta'>${ago(new Date(clip.createdAt))}</div>
+          <img src="${imageSrc}" />
         `,
       }
     }
