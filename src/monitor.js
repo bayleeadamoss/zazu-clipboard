@@ -4,9 +4,10 @@ const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
 const mkdirp = require('mkdirp')
+const { clipboard } = require('electron')
 
 module.exports = (pluginContext) => {
-  const { cwd, clipboard } = pluginContext
+  const { cwd } = pluginContext
 
   const sha1 = (message) => crypto.createHash('sha1').update(message).digest().toString('hex')
 
