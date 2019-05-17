@@ -1,4 +1,4 @@
-const ago = require('s-ago')
+const ago = require('s-ago').default
 const Color = require('color')
 const { htmlEncode } = require('js-htmlencode')
 const path = require('path')
@@ -18,8 +18,8 @@ module.exports = (allClips, options = {}) => {
         `,
       }
       if (isHexColor) {
-        const color = new Color(clip.raw)
-        const colorType = color.dark() ? 'dark' : 'light'
+        const color = Color(clip.raw)
+        const colorType = color.isDark() ? 'dark' : 'light'
         response.preview = `
           <pre
             class='text color ${colorType}'
