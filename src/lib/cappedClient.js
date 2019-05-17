@@ -43,12 +43,12 @@ class CappedClient {
           if (err) {
             //  We don't want to stop the execution for error
             //  so, output error log and continue
-            this.log('error', `'${clip.name}': ${err}`)
+            this.log('error', `fs.access() '${clip.name}': ${err}`)
             resolve()
           } else {
             fs.unlink(imagePath, (err) => {
               if (err) {
-                this.log('error', `'${clip.name}': ${err}`)
+                this.log('error', `fs.unlink() '${clip.name}': ${err}`)
                 resolve()
               } else {
                 resolve(imagePath)
