@@ -4,7 +4,7 @@ const { htmlEncode } = require('js-htmlencode')
 const path = require('path')
 const fs = require('fs')
 
-module.exports = (allClips, options = {}) => {
+function present(allClips, options = {}) {
   const { cwd } = options
   return allClips.map((clip) => {
     if (clip.type === 'text') {
@@ -54,3 +54,5 @@ module.exports = (allClips, options = {}) => {
     }
   })
 }
+
+module.exports = present
