@@ -7,11 +7,11 @@
     "color": "^3.1.1",
     "js-htmlencode": "^0.3.0",
     "mkdirp": "^0.5.1",
-    "nedb": "^1.8.0",
+    "nestdb": "^2.0.0",
     "s-ago": "^2.0.1"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "prepush": "npm run lint && npm test",
     "test": "mocha ./test"
   },
@@ -36,6 +36,8 @@
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "mocha": "^6.1.4",

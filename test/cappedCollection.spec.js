@@ -132,7 +132,7 @@ describe('CappedCollection', () => {
         let count = 0
         subject.all()
           .then((docs) => subject.handleOnRemove([docs[0]._id, docs[2]._id, docs[4]._id], (doc) => {
-            expect(doc.name === 'first' || doc.name === 'third' || doc.name === 'fifth').to.be.true
+            expect(doc.name === 'first' || doc.name === 'third' || doc.name === 'fifth').to.be.eq(true)
             ++count
           }))
           .then((ids) => {
@@ -158,7 +158,7 @@ describe('CappedCollection', () => {
       it('remove() will call the given callback function multiple times for multiple ids', (done) => {
         let count = 0
         subject.setOnRemove((doc) => {
-          expect(doc.name === 'fifth' || doc.name === 'third' || doc.name === 'second').to.be.true
+          expect(doc.name === 'fifth' || doc.name === 'third' || doc.name === 'second').to.be.eq(true)
           ++count
         })
         subject.all()

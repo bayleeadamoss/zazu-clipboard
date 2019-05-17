@@ -146,24 +146,24 @@ describe('CappedClient', () => {
     describe('all', () => {
       it('gives me all 5 items back', (done) => {
         subject.all()
-        .then((docs) => {
-          expect(docs.length).to.eq(5)
-        })
-        .then(done)
-        .catch(done)
+          .then((docs) => {
+            expect(docs.length).to.eq(5)
+          })
+          .then(done)
+          .catch(done)
       })
 
       it('is in the correct order', (done) => {
         subject.all()
-        .then((docs) => {
-          expect(docs[0].name).to.eq('fifth')
-          expect(docs[1].name).to.eq('fourth')
-          expect(docs[2].name).to.eq('third')
-          expect(docs[3].name).to.eq('second')
-          expect(docs[4].name).to.eq('first')
-        })
-        .then(() => done())
-        .catch(done)
+          .then((docs) => {
+            expect(docs[0].name).to.eq('fifth')
+            expect(docs[1].name).to.eq('fourth')
+            expect(docs[2].name).to.eq('third')
+            expect(docs[3].name).to.eq('second')
+            expect(docs[4].name).to.eq('first')
+          })
+          .then(() => done())
+          .catch(done)
       })
     })
   })

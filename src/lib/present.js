@@ -4,7 +4,7 @@ const { htmlEncode } = require('js-htmlencode')
 const path = require('path')
 const fs = require('fs')
 
-function present(allClips, options = {}) {
+function present (allClips, options = {}) {
   const { cwd } = options
   return allClips.map((clip) => {
     if (clip.type === 'text') {
@@ -12,6 +12,7 @@ function present(allClips, options = {}) {
       const response = {
         title: clip.raw,
         value: clip._id,
+        id: clip._id,
         preview: `
           <pre class='text'>${htmlEncode(clip.raw)}</pre>
           <div class='meta'>${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters</div>
@@ -45,6 +46,7 @@ function present(allClips, options = {}) {
       return {
         icon,
         title: clip.title,
+        id: clip._id,
         value: clip._id,
         preview: `
           <img src='${imageSrc}' />
