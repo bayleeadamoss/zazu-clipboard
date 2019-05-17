@@ -11,17 +11,17 @@ describe('Search', () => {
   describe('given three items that contain pole', () => {
     it('finds the literal pole', () => {
       const results = search('pole', clips)
-      expect(results).to.include({ raw: 'Quadrupoles' })
+      expect(results).to.deep.include.members([{ raw: 'Quadrupoles' }])
     })
 
     it('finds the case insensntive pole', () => {
       const results = search('pole', clips)
-      expect(results).to.include({ raw: 'Polemically' })
+      expect(results).to.deep.include.members([{ raw: 'Polemically' }])
     })
 
     it('does not find the pole with extra characters', () => {
       const results = search('pole', clips)
-      expect(results).to.not.include({ raw: 'Pigeonholer' })
+      expect(results).to.not.deep.include.members([{ raw: 'Pigeonholer' }])
     })
   })
 })
