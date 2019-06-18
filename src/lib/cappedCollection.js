@@ -1,4 +1,4 @@
-const Datastore = require('nedb')
+const Datastore = require('nestdb')
 const path = require('path')
 
 class CappedCollection {

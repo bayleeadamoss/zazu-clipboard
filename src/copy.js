@@ -1,10 +1,11 @@
 const CappedClient = require('./lib/cappedClient')
+const { clipboard, nativeImage } = require('electron')
 
 /**
  * Given an id, coyp the data to the clipboard.
  */
 module.exports = (pluginContext) => {
-  const { cwd, clipboard, nativeImage } = pluginContext
+  const { cwd } = pluginContext
 
   return (id) => {
     const clipCollection = CappedClient.init(cwd, {})

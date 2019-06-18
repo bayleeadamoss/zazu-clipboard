@@ -38,26 +38,26 @@ class CappedClient {
   removeCacheImage (clip) {
     return new Promise((resolve, reject) => {
       if (clip.raw) {
-        const f = path.join(this.cwd, clip.raw)
-        fs.access(f, fs.constants.R_OK | fs.constants.W_OK, (err) => {
+        const imagePath = path.resolve(this.cwd, clip.raw)
+        fs.access(imagePath, fs.constants.R_OK | fs.constants.W_OK, (err) => {
           if (err) {
             //  We don't want to stop the execution for error
             //  so, output error log and continue
-            this.log('error', `'${clip.name}': ${err}`)
+            this.log('warn', `fs.access() '${clip.name}': ${err}`)
             resolve()
           } else {
-            fs.unlink(f, (err) => {
+            fs.unlink(imagePath, (err) => {
               if (err) {
-                this.log('error', `'${clip.name}': ${err}`)
+                this.log('warn', `fs.unlink() '${clip.name}': ${err}`)
                 resolve()
               } else {
-                resolve(f)
+                resolve(imagePath)
               }
             })
           }
         })
       } else {
-        this.log('error', `clip.raw is empty for '${clip.name}'`)
+        this.log('warn', `clip.raw is empty for '${clip.name}'`)
         resolve()
       }
     })

@@ -5,6 +5,8 @@
 Remembers the things you've copied into your clipboard, and gives it back in a
 searchable format.
 
+![screenshot](screenshot.png)
+
 ## Usage
 
 Most commonly this is opened with a keyboard shortcut `alt+shift+v`, which can

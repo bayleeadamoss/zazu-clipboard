@@ -1,32 +1,33 @@
-const ago = require('s-ago')
+const ago = require('s-ago').default
 const Color = require('color')
 const { htmlEncode } = require('js-htmlencode')
 const path = require('path')
 const fs = require('fs')
 
-module.exports = (allClips, options = {}) => {
+function present (allClips, options = {}) {
   const { cwd } = options
   return allClips.map((clip) => {
     if (clip.type === 'text') {
       const isHexColor = clip.raw.match(/^#([0-9a-f]{3}){1,2}$/i)
       const response = {
         title: clip.raw,
+        subtitle: `${ago(new Date(clip.createdAt))}, ${clip.raw.length} characters`,
         value: clip._id,
+        id: clip._id,
         preview: `
-          <pre class='text'>${htmlEncode(clip.raw)}</pre>
-          <div class='meta'>${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters</div>
+          <pre class="text">${htmlEncode(clip.raw)}</pre>
         `,
       }
       if (isHexColor) {
-        const color = new Color(clip.raw)
-        const colorType = color.dark() ? 'dark' : 'light'
+        const color = Color(clip.raw)
+        const colorType = color.isDark() ? 'dark' : 'light'
         response.preview = `
           <pre
-            class='text color ${colorType}'
-            style='background-color: ${clip.raw};'>${clip.raw}</pre>
-          <div class='meta ${colorType}'>
-            ${ago(new Date(clip.createdAt))}<br />${clip.raw.length} characters
-          </div>
+            class="text color ${colorType}"
+            style="background-color: ${clip.raw};"
+          >
+            ${clip.raw}
+          </pre>
         `
       }
       return response
@@ -45,12 +46,15 @@ module.exports = (allClips, options = {}) => {
       return {
         icon,
         title: clip.title,
+        subtitle: ago(new Date(clip.createdAt)),
+        id: clip._id,
         value: clip._id,
         preview: `
-          <img src='${imageSrc}' />
-          <div class='meta'>${ago(new Date(clip.createdAt))}</div>
+          <img src="${imageSrc}" />
         `,
       }
     }
   })
 }
+
+module.exports = present
