@@ -1,4 +1,4 @@
-const ago = require('s-ago').default
+const ago = require('s-ago')
 const Color = require('color')
 const { htmlEncode } = require('js-htmlencode')
 const path = require('path')
