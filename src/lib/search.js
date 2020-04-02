@@ -6,7 +6,9 @@ module.exports = (query, allClips) => {
     query.length === 0
       ? allClips
       : search(query, allClips, {
-        keySelector: item => [item.raw, pinyin(item.raw, { style: pinyin.STYLE_NORMAL }).join('')],
+        keySelector: item => [item.raw, pinyin(item.raw, { heteronym: true, // 启用多音字模式
+          segment: true, // 启用分词，以解决多音字问题。
+          style: pinyin.STYLE_NORMAL }).join('')],
       })
   return filteredList
 }

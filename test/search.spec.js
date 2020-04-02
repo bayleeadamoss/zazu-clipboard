@@ -11,6 +11,7 @@ const chineseClips = [
   { raw: 'Pige测试字符串onhole' },
   { raw: '测试字符二' },
   { raw: '拼音二' },
+  { raw: '我觉得还行' },
 ]
 
 describe('Search', () => {
@@ -34,9 +35,10 @@ describe('Search', () => {
     })
 
     it('finds the pole with pinyin', () => {
-      const results = search('er', chineseClips)
-      expect(results).to.deep.include.members([{ raw: '测试字符二' },
+      expect(search('er', chineseClips)).to.deep.include.members([{ raw: '测试字符二' },
         { raw: '拼音二' }])
+      expect(search('haixing', chineseClips)).to.deep.include.members([
+        { raw: '我觉得还行' }])
     })
   })
 })
