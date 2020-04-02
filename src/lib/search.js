@@ -1,9 +1,12 @@
+const search = require('fast-fuzzy').search
+const pinyin = require('pinyin')
+
 module.exports = (query, allClips) => {
-  const regexQuery = new RegExp(query, 'i')
-  if (query === '') {
-    return allClips
-  }
-  return allClips.filter((clip) => {
-    return clip.raw.match(regexQuery)
-  })
+  const filteredList =
+    query.length === 0
+      ? allClips
+      : search(query, allClips, {
+        keySelector: item => [item.raw, pinyin(item.raw, { style: pinyin.STYLE_NORMAL }).join('')],
+      })
+  return filteredList
 }
