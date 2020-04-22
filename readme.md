@@ -1,4 +1,4 @@
-# Clipboard manager for Zazu (with Chinese support)
+# Clipboard manager for Zazu
 
 [![Build Status](https://travis-ci.org/tinytacoteam/zazu-clipboard.svg?branch=master)](https://travis-ci.org/tinytacoteam/zazu-clipboard)
 
