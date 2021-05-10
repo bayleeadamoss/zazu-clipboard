@@ -1,4 +1,4 @@
-## Clipboard manager for Zazu
+# Clipboard manager for Zazu
 
 [![Build Status](https://travis-ci.org/tinytacoteam/zazu-clipboard.svg?branch=master)](https://travis-ci.org/tinytacoteam/zazu-clipboard)
 
@@ -17,57 +17,55 @@ Without a keyboard shortcut, open Zazu and use the prefix `clip` to search
 through your clips. For example if you want to search your clips for the word
 emoji you can use this example:
 
-~~~
+```
 clip emoji
-~~~
+```
 
 ## Installing
 
 Add the package to your plugins array in `./zazurc.js`.
 
-~~~ json
+```json
 {
-  "plugins": [
-    "tinytacoteam/zazu-clipboard"
-  ]
+  "plugins": ["tinytacoteam/zazu-clipboard"]
 }
-~~~
+```
 
 You can overwrite the keyboard shortcut by defining a variable with the name
-`ClipboardKey`.
+`ClipboardKey`, for example, on MacOS you can utilize `ctrl+v`:
 
-~~~ json
+```json
 {
   "name": "tinytacoteam/zazu-clipboard",
   "variables": {
-    "ClipboardKey": "cmd+shift+v"
+    "ClipboardKey": "ctrl+v"
   }
 }
-~~~
+```
 
 If you prefer to disable image storing, you can set the `ignoreImages` to
 `true`.
 
-~~~ json
+```json
 {
   "name": "tinytacoteam/zazu-clipboard",
   "variables": {
     "ignoreImages": true
   }
 }
-~~~
+```
 
 By defualt we remember the last 50 items in your clipboard. To change this add a
 `size` variable to your configuration.
 
-~~~ json
+```json
 {
   "name": "tinytacoteam/zazu-clipboard",
   "variables": {
     "size": 1000
   }
 }
-~~~
+```
 
 The clipboard monitor update interval is `1000` ms (except `3000` ms for Linux system) by default, however, user can customize the interval by setting `updateInterval` option in the configuration. The interval has to be no less than `250` ms.
 

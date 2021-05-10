@@ -41,9 +41,7 @@ class CappedClient {
         const imagePath = path.resolve(this.cwd, clip.raw)
         fs.access(imagePath, fs.constants.R_OK | fs.constants.W_OK, (err) => {
           if (err) {
-            //  We don't want to stop the execution for error
-            //  so, output error log and continue
-            this.log('warn', `fs.access() '${clip.name}': ${err}`)
+            // we are just trying to check the file, so err is generally file not exist error, can be safely ignored
             resolve()
           } else {
             fs.unlink(imagePath, (err) => {
